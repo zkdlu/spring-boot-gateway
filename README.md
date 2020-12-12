@@ -2,11 +2,11 @@
 
 어째선지 자꾸 zuul에서 eureka랑 같이 id로 라우팅을 하면 Forwardind Error가 떴다. (될 때도 있고 안될 때도 있고 이유를 모르겠네;;)
 
-# Micro Service
+### Micro Service
 - Service A : localhost:8081/
 - Service B : localhost:8082/
 
-# Step 1. Zuul로 Gateway 만들기
+### Step 1. Zuul로 Gateway 만들기
 1. Zuul 의존성 추가
 ```gradle
 dependencies {
@@ -34,7 +34,7 @@ zuul:
 ```
 > localhost:8080/api/a 또는 localhost:8080/api/b 로 사용 
 
-# Step 2. Filter 적용해보기
+### Step 2. Filter 적용해보기
 - Zuul에서 클라이언트가 보낸 요청을 라우팅 하기 전(pre), 라우팅할 때(routing), 라우팅한 후 응답을 돌려 받았을 때(post) 필요한 작업을 수행 + (error)
 
 - Type
