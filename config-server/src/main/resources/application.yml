@@ -1,0 +1,10 @@
+server:
+  port: 8088
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zkdlu/spring-boot-gateway.git
+          search-paths: config
