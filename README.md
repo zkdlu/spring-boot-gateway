@@ -33,3 +33,49 @@ zuul:
       url: http://localhost:8082
 ```
 > localhost:8080/api/a 또는 localhost:8080/api/b 로 사용 
+
+# Step 2. Filter 적용해보기
+- Zuul에서 클라이언트가 보낸 요청을 라우팅 하기 전(pre), 라우팅할 때(routing), 라우팅한 후 응답을 돌려 받았을 때(post) 필요한 작업을 수행 + (error)
+
+- Type
+	: pre, route, post, error (ZuulFilter를 상속받아 구현)
+- Order
+	: filter 실행 순서를 결정 (filterOrder())
+- Criteria
+	: filter 실행 여부 결정 (shouldFilter())
+- Action
+	: filter criteria 만족 시 실행할 비즈니스 로직 (run())
+
+```java
+@Component
+public class PreFilter extends ZuulFilter {
+    private static Logger logger = LoggerFactory.getLogger(PreFilter.class);
+
+    @Override
+    public String filterType() {
+        return "pre";
+    }
+
+    @Override
+    public int filterOrder() {
+        return 0;
+    }
+
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
+
+    @Override
+    public Object run() throws ZuulException {
+        RequestContext context = RequestContext.getCurrentContext();
+        HttpServletRequest request = context.getRequest();
+
+        logger.info((String.format("%s request to %s",
+                request.getMethod(),
+                request.getRequestURL().toString())));
+
+        return null;
+    }
+}
+```
