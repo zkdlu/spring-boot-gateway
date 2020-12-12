@@ -1,4 +1,0 @@
-# b-service-local.yml
-spring:
-  profiles: local
-  message: Hello B Service Server!!!!!

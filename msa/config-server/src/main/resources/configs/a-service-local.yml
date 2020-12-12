@@ -1,4 +1,0 @@
-# a-service-local.yml
-spring:
-  profiles: local
-  message: Hello A Service Server!!!!!
