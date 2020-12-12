@@ -80,3 +80,8 @@ public class PreFilter extends ZuulFilter {
     }
 }
 ```
+
+## Config Server + Zuul + Eureka 
+### Config Server
+- 서비스의 환경 설정을 중앙에서 관리하고 실시간으로 설정을 변경
+- 각각 서비스에 중복으로 존재하던 설정값을 관리할 수 있음
