@@ -85,3 +85,63 @@ public class PreFilter extends ZuulFilter {
 ### Config Server
 - 서비스의 환경 설정을 중앙에서 관리하고 실시간으로 설정을 변경
 - 각각 서비스에 중복으로 존재하던 설정값을 관리할 수 있음
+
+<img src="./images/config server.png" width="30%" height="30%"/>
+
+
+
+1. 의존성 추가
+
+```gradle
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+}
+```
+
+2. @EnableConfigServer 어노테이션 추가
+
+```java
+@EnableConfigServer
+@SpringBootApplication
+public class ConfigServerApplication {
+```
+
+3. application.yml 제거 후 환경 별 bootstrap.yml 생성
+
+- 공통 환경 설정
+```yml
+# bootstrap.yml
+server:
+  port: 8080
+spring:
+  profiles:
+    active: native
+```
+- local 환경 설정
+```yml
+# bootstrap-local.yml 로컬 환경설정 파일
+spring:
+  profile: native
+  cloud:
+    config:
+      server:
+        native: # 서버 실행시 profile 설정시 native를 지정해야 적용됩니다.
+          search-locations: file:///${user.home}/configs # window - C:\Users\user
+          #search-locations: file://${user.home}/configs # mac, linux - /home/user
+          #search-locations: classpath:/configs # 설정 변경 시 서버를 재시작 해야 함
+```
+
+- 서비스별 환경 설정
+
+```yml
+# a-service-local.yml
+spring:
+  profiles: local
+  message: Hello A Service Server!!!!!
+
+# b-service-local.yml
+spring:
+  profiles: local
+  message: Hello B Service Server!!!!!
+```
+
