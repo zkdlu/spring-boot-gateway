@@ -1,0 +1,9 @@
+zuul:
+  prefix: /api
+  routes:
+    servicea:
+      path: /a/**
+      url: http://localhost:8081
+    serviceb:
+      path: /b/**
+      url: http://localhost:8082
