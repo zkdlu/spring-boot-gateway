@@ -86,7 +86,7 @@ public class PreFilter extends ZuulFilter {
 - 서비스의 환경 설정을 중앙에서 관리하고 실시간으로 설정을 변경
 - 각각 서비스에 중복으로 존재하던 설정값을 관리할 수 있음
 
-<img src="./images/config server.png" width="30%" height="30%"/>
+<img src="./images/config server.png" width="50%" height="50%"/>
 
 
 
