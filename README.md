@@ -2,6 +2,7 @@
 
 어째선지 자꾸 zuul에서 eureka랑 같이 id로 라우팅을 하면 Forwardind Error가 떴다. (될 때도 있고 안될 때도 있고 이유를 모르겠네;;)
 
+## Zuul로 라우팅 해보기
 ### Micro Service
 - Service A : localhost:8081/
 - Service B : localhost:8082/
